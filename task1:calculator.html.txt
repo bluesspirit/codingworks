@@ -1,0 +1,101 @@
+<html>
+<head>
+    <title>advanced Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+ 
+        .calculator {
+            width: 250px;
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin: 0 auto;
+        }
+ 
+        .calculator input {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+ 
+        .calculator .row {
+            display: flex;
+            justify-content: space-between;
+        }
+ 
+        .calculator .row .button {
+            width: 30%;
+        }
+    html{
+        background:linear-gradient(to right,#ff0052,#0072ff) ;
+        height:100%
+    }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="result" readonly>
+        <div class="row">
+            
+            <button class="button" onclick="appendChar('7')">7</button>
+            <button class="button" onclick="appendChar('8')">8</button>
+            <button class="button" onclick="appendChar('9')">9</button>
+            <button class="button" onclick="appendChar('/')">/</button>
+
+            <button class="button" onclick="clearResult()">C</button>
+            <button class="button" onclick="deleteLastChar()">&larr;</button>
+
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendChar('4')">4</button>
+            <button class="button" onclick="appendChar('5')">5</button>
+            <button class="button" onclick="appendChar('6')">6</button>
+            <button class="button" onclick="appendChar('*')">*</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendChar('1')">1</button>
+            <button class="button" onclick="appendChar('2')">2</button>
+            <button class="button" onclick="appendChar('3')">3</button>
+            <button class="button" onclick="appendChar('-')">-</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendChar('0')">0</button>
+            <button class="button" onclick="appendChar('.')">.</button>
+            <button class="button" onclick="calculate()">=</button>
+            <button class="button" onclick="appendChar('+')">+</button>
+        </div>
+        <div class="row">
+            <button class="button" onclick="appendChar('Math.pow(')">^</button>
+            <button class="button" onclick="appendChar('Math.sin(')">sin</button>
+            <button class="button" onclick="appendChar('Math.cos(')">cos</button>
+            <button class="button" onclick="appendChar('Math.tan(')">tan</button>
+        </div>
+    </div>
+ 
+    <script>
+        function appendChar(char) {
+            document.getElementById('result').value += char;
+        }
+ 
+        function clearResult() {
+            document.getElementById('result').value = '';
+        }
+ 
+        function deleteLastChar() {
+            var result = document.getElementById('result').value;
+            document.getElementById('result').value = result.slice(0, -1);
+        }
+    
+ 
+        function calculate() {
+            var result = document.getElementById('result').value;
+            try {
+                var calculatedResult = eval(result);
+                document.getElementById('result').value = calculatedResult;
+            } catch (error) {
+                alert('Invalid expression');
+            }
+        }
+    </script>
+</body>
+</html>
